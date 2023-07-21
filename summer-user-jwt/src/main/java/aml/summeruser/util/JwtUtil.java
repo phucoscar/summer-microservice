@@ -21,6 +21,7 @@ public class JwtUtil {
     public String generateAccessToken(int maSV, String username, String hoTen, String email) {
         // add custom claims for test
         Map<String, Object> additionalClaims = new HashMap<>();
+        additionalClaims.put("username", username);
         additionalClaims.put("maSV", maSV);
         additionalClaims.put("hoTen", hoTen);
         additionalClaims.put("email", email);
