@@ -10,7 +10,6 @@ import java.util.Map;
 
 @Component
 public class JwtUtil {
-    private static final long EXPIRE_DURATION = 5 * 60 * 1000; // 5 minutes
 
     @Value("jqk!2n3")
     private String secretKey;

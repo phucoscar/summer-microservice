@@ -98,7 +98,6 @@
             <artifactId>spring-session-jdbc</artifactId>
             <version>1.2.0.RC1</version>
         </dependency>
-
     </dependencies>
     <dependencyManagement>
         <dependencies>

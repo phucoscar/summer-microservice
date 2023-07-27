@@ -28,7 +28,7 @@ public class SecurityFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        List<String> apiEndpoints = Arrays.asList("/register","/login", "/logout", "/refreshtoken");
+        List<String> apiEndpoints = Arrays.asList("/register","/login", "/logout", "/refreshtoken", "/swagger-ui.html", "/v2/api-docs", "/webjars", "/swagger-resources");
         Predicate<HttpServletRequest> isApiSecured = r -> apiEndpoints.stream()
                 .noneMatch(uri -> r.getRequestURI().contains(uri));
         if (isApiSecured.test(request)) {

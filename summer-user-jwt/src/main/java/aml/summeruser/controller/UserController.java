@@ -7,8 +7,13 @@ import aml.summeruser.entity.RefreshToken;
 import aml.summeruser.entity.SinhVien;
 import aml.summeruser.service.RefreshTokenService;
 import aml.summeruser.service.SinhVienService;
+import aml.summeruser.service.kafka.KafkaProducer;
 import com.google.gson.Gson;
+import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,17 +33,21 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private SinhVienService sinhVienService;
 
     @Autowired
     private RefreshTokenService refreshTokenService;
 
+    @Autowired
+    private KafkaProducer kafkaProducer;
+
     @PostMapping(value = "/login", produces = "application/json")
     public ResponseEntity<?> login(LoginDto dto,
                                    @RequestParam(required = false) String message) {
         Result result = sinhVienService.checkLogin(dto);
+        kafkaProducer.sendMessage(dto);
         return new ResponseEntity<>(new Gson().toJson(result), HttpStatus.OK);
     }
 
@@ -51,6 +60,7 @@ public class UserController {
 
     @PostMapping(value = "/refreshtoken", produces = "application/json",
             consumes = "application/json")
+    @ApiOperation(value = "Get new token from refresh token")
     public ResponseEntity<?> refreshToken(@RequestBody RefreshToken refreshTokenRequest) {
         String token = refreshTokenRequest.getToken();
         Result result = sinhVienService.generateNewToken(token);
@@ -71,6 +81,7 @@ public class UserController {
     @GetMapping(value = "/showSession", produces = "application/json")
     public ResponseEntity<?> showListUser(HttpSession session) {
         String result = sinhVienService.showListUser(session);
-            return new ResponseEntity<>(result, HttpStatus.OK);
+        logger.info("Result: " + result);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

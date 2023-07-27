@@ -10,6 +10,8 @@ import aml.summeruser.entity.SinhVien;
 import aml.summeruser.repository.SinhVienRepository;
 import aml.summeruser.util.JwtUtil;
 import com.google.gson.Gson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,6 +30,8 @@ import java.util.stream.Collectors;
 @Service
 public class SinhVienService {
 
+    private static final Logger logger = LoggerFactory.getLogger(SinhVienService.class);
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -43,8 +47,10 @@ public class SinhVienService {
     @Autowired
     private RefreshTokenService refreshTokenService;
 
+
     public Result checkLogin(LoginDto dto) {
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword());
+       logger.info("Username: {}, password: {}", dto.getUsername(), dto.getPassword());
         try {
             Authentication authentication = authenticationManager.authenticate(auth);
             SinhVien sinhVien = sinhVienRepo.findByUsername(dto.getUsername()).get();
@@ -52,6 +58,8 @@ public class SinhVienService {
             List<String> roles = sinhVien.getRoles().stream().map(Role::getName).collect(Collectors.toList());
             RefreshToken refreshToken = refreshTokenService.generateRefreshToken(sinhVien.getMaSV());
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            logger.info("Login success");
+
             return Result.success("Login successful", new LoginResponse(dto.getUsername(), accessToken, refreshToken.getToken(), roles));
         } catch (Exception e) {
             return Result.fail("Username or password is invalid");
