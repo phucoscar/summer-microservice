@@ -1,4 +1,4 @@
-package aml.summeruser.config;
+package aml.summeruser.config.kafka;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class KafkaConfig {
+public class KafkaProducerConfig {
 
     @Value("${spring.kafka.consumer.bootstrap-servers}")
     private String kafkaBootstrapServers ;
