@@ -14185,3 +14185,60 @@ org.apache.kafka.common.errors.TimeoutException: Topic test not present in metad
 2023-07-27 11:48:49 WARN  o.s.s.w.c.HttpSessionSecurityContextRepository - Failed to create a session, as response has been committed. Unable to store SecurityContext.
 2023-07-27 11:48:49 INFO  a.s.s.k.KafkaConsumer - Message received -> LoginDto(username=admin, password=12345)
 2023-07-27 11:53:35 INFO  c.n.d.s.r.a.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2023-07-27 11:57:36 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-group-id-1, groupId=group-id] Node -1 disconnected.
+2023-07-27 11:57:49 INFO  o.a.k.c.NetworkClient - [Producer clientId=producer-1] Node -1 disconnected.
+2023-07-27 11:58:35 INFO  c.n.d.s.r.a.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2023-07-27 12:03:35 INFO  c.n.d.s.r.a.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2023-07-27 12:21:39 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-group-id-1, groupId=group-id] Node 0 disconnected.
+2023-07-27 12:21:39 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-group-id-1, groupId=group-id] Cancelled in-flight FETCH request with correlation id 2574 due to node 0 being disconnected (elapsed time since creation: 863234ms, elapsed time since send: 863233ms, request timeout: 30000ms)
+2023-07-27 12:21:39 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-group-id-1, groupId=group-id] Node 2147483647 disconnected.
+2023-07-27 12:21:39 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Group coordinator 172.16.21.158:9092 (id: 2147483647 rack: null) is unavailable or invalid due to cause: coordinator unavailable.isDisconnected: true. Rediscovery will be attempted.
+2023-07-27 12:21:39 INFO  o.a.k.c.NetworkClient - [Producer clientId=producer-1] Node 0 disconnected.
+2023-07-27 12:21:39 INFO  o.a.k.c.FetchSessionHandler - [Consumer clientId=consumer-group-id-1, groupId=group-id] Error sending fetch request (sessionId=1110186292, epoch=2188) to node 0:
+org.apache.kafka.common.errors.DisconnectException: null
+2023-07-27 12:21:40 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Discovered group coordinator 172.16.21.158:9092 (id: 2147483647 rack: null)
+2023-07-27 12:21:40 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Discovered group coordinator 172.16.21.158:9092 (id: 2147483647 rack: null)
+2023-07-27 12:21:40 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Attempt to heartbeat with Generation{generationId=3, memberId='consumer-group-id-1-030b1c7b-cc75-4f63-8091-5b7b761021e6', protocol='range'} and group instance id Optional.empty failed due to UNKNOWN_MEMBER_ID, resetting generation
+2023-07-27 12:21:40 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Resetting generation due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-07-27 12:21:40 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Request joining group due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-07-27 12:21:40 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Giving away all assigned partitions as lost since generation has been reset,indicating that consumer is no longer part of the group
+2023-07-27 12:21:40 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Lost previously assigned partitions test-0
+2023-07-27 12:21:40 INFO  o.s.k.l.KafkaMessageListenerContainer - group-id: partitions lost: [test-0]
+2023-07-27 12:21:40 INFO  o.s.k.l.KafkaMessageListenerContainer - group-id: partitions revoked: [test-0]
+2023-07-27 12:21:40 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] (Re-)joining group
+2023-07-27 12:21:40 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Request joining group due to: need to re-join with the given member-id
+2023-07-27 12:21:40 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] (Re-)joining group
+2023-07-27 12:21:41 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Successfully joined group with generation Generation{generationId=5, memberId='consumer-group-id-1-6a9ca658-6bff-4cc2-aa91-d860c4542342', protocol='range'}
+2023-07-27 12:21:41 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Finished assignment for group at generation 5: {consumer-group-id-1-6a9ca658-6bff-4cc2-aa91-d860c4542342=Assignment(partitions=[test-0])}
+2023-07-27 12:21:41 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Successfully synced group in generation Generation{generationId=5, memberId='consumer-group-id-1-6a9ca658-6bff-4cc2-aa91-d860c4542342', protocol='range'}
+2023-07-27 12:21:41 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Notifying assignor about the new Assignment(partitions=[test-0])
+2023-07-27 12:21:41 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Adding newly assigned partitions: test-0
+2023-07-27 12:21:41 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Setting offset for partition test-0 to the committed offset FetchPosition{offset=1, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[172.16.21.158:9092 (id: 0 rack: null)], epoch=0}}
+2023-07-27 12:21:41 INFO  o.s.k.l.KafkaMessageListenerContainer - group-id: partitions assigned: [test-0]
+2023-07-27 12:21:51 WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m52s84ms941µs700ns).
+2023-07-27 12:22:57 INFO  c.n.d.s.r.a.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2023-07-27 13:32:23 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-group-id-1, groupId=group-id] Node 2147483647 disconnected.
+2023-07-27 13:32:23 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Group coordinator 172.16.21.158:9092 (id: 2147483647 rack: null) is unavailable or invalid due to cause: coordinator unavailable.isDisconnected: true. Rediscovery will be attempted.
+2023-07-27 13:32:24 INFO  o.a.k.c.NetworkClient - [Producer clientId=producer-1] Node 0 disconnected.
+2023-07-27 13:32:24 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Discovered group coordinator 172.16.21.158:9092 (id: 2147483647 rack: null)
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Attempt to heartbeat with Generation{generationId=5, memberId='consumer-group-id-1-6a9ca658-6bff-4cc2-aa91-d860c4542342', protocol='range'} and group instance id Optional.empty failed due to UNKNOWN_MEMBER_ID, resetting generation
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Resetting generation due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Request joining group due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Giving away all assigned partitions as lost since generation has been reset,indicating that consumer is no longer part of the group
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Lost previously assigned partitions test-0
+2023-07-27 13:32:25 INFO  o.s.k.l.KafkaMessageListenerContainer - group-id: partitions lost: [test-0]
+2023-07-27 13:32:25 INFO  o.s.k.l.KafkaMessageListenerContainer - group-id: partitions revoked: [test-0]
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] (Re-)joining group
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Request joining group due to: need to re-join with the given member-id
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] (Re-)joining group
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Successfully joined group with generation Generation{generationId=7, memberId='consumer-group-id-1-267e374a-4dc8-4d4b-9963-34e700d59055', protocol='range'}
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Finished assignment for group at generation 7: {consumer-group-id-1-267e374a-4dc8-4d4b-9963-34e700d59055=Assignment(partitions=[test-0])}
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Successfully synced group in generation Generation{generationId=7, memberId='consumer-group-id-1-267e374a-4dc8-4d4b-9963-34e700d59055', protocol='range'}
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Notifying assignor about the new Assignment(partitions=[test-0])
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Adding newly assigned partitions: test-0
+2023-07-27 13:32:25 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-group-id-1, groupId=group-id] Setting offset for partition test-0 to the committed offset FetchPosition{offset=1, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[172.16.21.158:9092 (id: 0 rack: null)], epoch=0}}
+2023-07-27 13:32:25 INFO  o.s.k.l.KafkaMessageListenerContainer - group-id: partitions assigned: [test-0]
+2023-07-27 13:32:51 WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h5m59s935ms43µs400ns).
+2023-07-27 13:33:27 INFO  c.n.d.s.r.a.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2023-07-27 13:38:27 INFO  c.n.d.s.r.a.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2023-07-27 13:43:27 INFO  c.n.d.s.r.a.ConfigClusterResolver - Resolving eureka endpoints via configuration
