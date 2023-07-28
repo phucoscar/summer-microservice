@@ -1,19 +1,21 @@
-package com.aml.entity;
+package aml.summeruser.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "product")
+@Table(name = "role")
 @Data
-public class Product {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column
     private String name;
 
-    @Column
-    private String description;
+    @ManyToMany(mappedBy = "roles")
+    private List<SinhVien> sinhViens;
 }
